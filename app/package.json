@@ -8,7 +8,7 @@
     "build": "node scripts/generate-commit-info.mjs && next build",
     "test": "vitest run",
     "test:watch": "vitest",
-    "postbuild": "next-sitemap && node scripts/resolve-symlinks.mjs",
+    "postbuild": "next-sitemap && cp -rL .next .next-resolved && rm -rf .next && mv .next-resolved .next",
     "start": "next start",
     "lint": "eslint .",
     "format": "prettier --write .",
