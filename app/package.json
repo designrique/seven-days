@@ -3,9 +3,9 @@
   "version": "0.1.18",
   "private": true,
   "scripts": {
+    "build": "node scripts/generate-commit-info.mjs && next build",
     "prepare": "husky",
     "dev": "next dev --turbo",
-    "build": "node scripts/generate-commit-info.mjs && next build",
     "test": "vitest run",
     "test:watch": "vitest",
     "postbuild": "next-sitemap && cp -rL .next .next-resolved && rm -rf .next && mv .next-resolved .next",
@@ -34,7 +34,11 @@
     "bundle:check": "node scripts/bundle/check-bundle-size.js",
     "vercel:ignore:test": "bash scripts/vercel-ignore-regression.sh",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "type": "module",
   "dependencies": {
@@ -98,6 +102,7 @@
     "@chromatic-com/storybook": "^5.0.0",
     "@eslint/eslintrc": "^3",
     "@next/bundle-analyzer": "^16.2.4",
+    "@opennextjs/cloudflare": "^1.19.11",
     "@storybook/addon-a11y": "^10.1.11",
     "@storybook/addon-docs": "^10.1.11",
     "@storybook/addon-onboarding": "^10.1.11",
@@ -122,6 +127,7 @@
     "husky": "^9.1.7",
     "jsdom": "^27.0.1",
     "lint-staged": "^16.2.7",
+    "opennextjs-cloudflare": "^1.0.0",
     "playwright": "^1.57.0",
     "postcss": "^8.5.10",
     "prettier": "^3.6.2",
@@ -132,7 +138,8 @@
     "tailwindcss": "^4.1.18",
     "tsx": "^4.20.6",
     "typescript": "^5",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "wrangler": "^4.103.0"
   },
   "optionalDependencies": {
     "@next/swc-win32-x64-msvc": "npm:null@*"

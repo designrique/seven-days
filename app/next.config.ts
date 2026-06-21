@@ -217,3 +217,5 @@ const nextConfig: NextConfig = {
 };
 
 export default withBundleAnalyzer(withNextIntl(nextConfig));
+
+import('@opennextjs/cloudflare').then(m => m.initOpenNextCloudflareForDev());
