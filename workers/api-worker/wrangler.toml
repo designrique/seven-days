@@ -1,0 +1,23 @@
+# wrangler.toml - Configuração do Worker da API do Fluency Flow
+name = "fluency-flow-api"
+main = "src/index.ts"
+compatibility_date = "2026-06-20"
+compatibility_flags = ["nodejs_compat"]
+
+# Bindings de IA (Workers AI)
+[ai]
+binding = "AI"
+
+# Base de dados D1
+[[d1_databases]]
+binding = "DB"
+database_name = "fluency-flow-db"
+database_id = "d1883f08-21c1-47a9-8fa5-b4ac959482cd"
+migrations_dir = "migrations"
+
+# Variáveis de ambiente
+[vars]
+ENVIRONMENT = "development"
+
+# Em desenvolvimento local, usar:
+# npx wrangler dev --port 8787

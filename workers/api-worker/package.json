@@ -1,0 +1,19 @@
+{
+  "name": "fluency-flow-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --port 8787",
+    "deploy": "wrangler deploy",
+    "db:init": "wrangler d1 execute fluency-flow-db --local --file=../../schema.sql",
+    "db:seed": "wrangler d1 execute fluency-flow-db --local --file=seed.sql"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260621.1",
+    "wrangler": "^4.103.0"
+  },
+  "dependencies": {
+    "@cloudflare/ai": "^1.2.0"
+  }
+}
